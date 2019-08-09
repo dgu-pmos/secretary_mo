@@ -9,13 +9,19 @@
       <ul>
         {% for Memocond in memocond_list %}
           <p> memo : {{ Memocond.text }}</p>
-          <p> location : {{ Memocond.gps }}</p>
+          <p> location : {{ Memocond.locate }}</p>
+          <p> temperature : {{ Memocond.temp }}</p>
+          <p> humidity : {{ Memocond.humi }}</p>
           <p> weather : {{ Memocond.weat }}</p>
           <p> date : {{ Memocond.date | date:"y-m-d-h:m:s" }}</p>
         {% endfor %}
       </ul><br>
-      <p>city : {{ weather.city }}</p>
-      <p>current weather : {{ weather.temperature }}</p>
-      <p>description : {{ weather.description }}</p>
+
+      <input
+          type="button"
+          class="go_to_add_memo"
+          value="add memo"
+          onclick="location.href='{% url 'pmos:memo_add' %}';"
+      >
   </body>
 </html>

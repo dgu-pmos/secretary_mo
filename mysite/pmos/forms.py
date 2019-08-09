@@ -13,3 +13,11 @@ class HouseForm(forms.ModelForm):
         #use = forms.CharField()
         #comment = forms.CharField()
         #date = forms.DateField(initial=datetime.date.today)
+
+class MemoForm(forms.ModelForm):
+    class Meta:
+        model = Memocond
+        fields=('text', 'lat', 'lon',)
+        widgets = {
+            'text': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
+        }

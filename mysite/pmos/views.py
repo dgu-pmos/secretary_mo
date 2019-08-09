@@ -12,7 +12,7 @@ from django.core import serializers
 
 from pmos.models import Roomcond, Memocond, Housecond
 
-from .forms import HouseForm
+from .forms import HouseForm, MemoForm
 # Create your views here.
 
 def monitor(request):
@@ -22,23 +22,40 @@ def monitor(request):
 
 def memo(request):
     memocond_list = Memocond.objects.all().order_by('-date')
-    url = 'http://api.openweathermap.org/data/2.5/weather?lat=37.5400399&lon=127.09341909999999&appid=19c6ecde75f00332ef1416854a8fd1be'
-    #url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=19c6ecde75f00332ef1416854a8fd1be'
-    city = 'Seoul'
-    city_weather = requests.get(url.format(city)).json() #request the API data and convert the JSON to Python data types
-    weather={
-    'city' : city,
-    'temperature' : city_weather['main']['temp'],
-    'description' : city_weather['weather'][0]['description'],
-    }
-    return render(request, 'pmos/memo.html', {'memocond_list':memocond_list, 'weather':weather})
+    return render(request, 'pmos/memo.html', {'memocond_list':memocond_list})
+
+def memo_add(request):
+    if request.method == "POST":
+        form = MemoForm(request.POST, request.FILES)
+        if form.is_valid():
+            memo = form.save(commit=False)
+            url = 'http://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid=19c6ecde75f00332ef1416854a8fd1be'.format(memo.lat, memo.lon)
+            url2 = 'https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x={}&y={}&input_coord=WGS84'.format(memo.lon, memo.lat)
+            headers = {'Authorization':'KakaoAK ef023e151052064467c31652f247eae2'}
+            city_name = requests.get(url2, headers=headers).json()
+            city_weather = requests.get(url).json()
+            weather={
+                'city' : city_weather['name'],
+                'temperature' : (round(city_weather['main']['temp']/10)),
+                'humidity' : city_weather['main']['humidity'],
+                'description' : city_weather['weather'][0]['description'],
+            }
+            memo.temp = weather['temperature']
+            memo.humi = weather['humidity']
+            memo.locate = city_name['documents'][0]['address_name']
+            memo.weat = weather['description']
+            memo.save()
+            return HttpResponseRedirect(reverse('pmos:memo')) # Redirect after POST
+    else:
+        form = MemoForm()
+        return render(request, 'pmos/memo_add.html', {'form':form})
 
 #def memo_reg(request, Memocond_id):
 #    memocond = get_object_or_404(Memocond, pk=Memocond_id)
 #    memocond.save()
 #    return HttpResponseRedirect(reverse('pmos:memo'))
 
-def household_view(request):
+def household(request):
     household_list = Housecond.objects.filter(date__month='8')
     return render(request, 'pmos/household.html', {'household_list':household_list})
 
@@ -52,7 +69,7 @@ def household_add(request):
             else :
                 house.balance = house.balance - house.expense
             house.save()
-            return HttpResponseRedirect(reverse('pmos:household_view')) # Redirect after POST
+            return HttpResponseRedirect(reverse('pmos:household')) # Redirect after POST
     else:
         form = HouseForm()
         household_list = Housecond.objects.all().order_by('-id')
