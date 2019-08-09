@@ -1,0 +1,45 @@
+<h1> New Memo </h1>
+<script type="text/javascript">
+  function getLocation(a, b) {
+    if (navigator.geolocation) { // GPS를 지원하면
+      navigator.geolocation.getCurrentPosition(function(position) {
+        a = position.coords.latitude
+        b = position.coords.longitude
+        document.getElementById('result_a').innerHTML=a;
+        document.getElementById('result_b').innerHTML=b;
+      }, function(error) {
+        console.error(error);
+      }, {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      alert('GPS를 지원하지 않습니다');
+    }
+  }
+  $.ajax({
+    url: 'https://apis.daum.net/local/geo/coord2addr?apikey=발급받은API키&longitude=' + lon + '&latitude=' + lat + '&inputCoordSystem=WGS84&output=json',
+    type: 'GET',
+    cache: false,
+    context: {},
+    crossOrigin: true,
+    success: function(data) {
+        var jsonObj = $.parseJSON(data);
+        var contentText = document.getElementById('content');
+            contentText.innerHTML += "<br>동네 이름 : " + jsonObj.name + " / 전체 주소 : " + jsonObj.fullName + " / 나라 : " + jsonObj.name0;
+    },error:function(request,status,error){
+        alert("다시 시도해주세요.\n" + "code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+});
+  var a,b
+  getLocation(a,b);
+</script>
+<div id="result_a"></div><div id="result_b"></div>
+<body>
+<form method="POST" class="post-form">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" name="save btn btn-default">Add</button>
+</form>
+</body>

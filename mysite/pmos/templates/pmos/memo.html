@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>My Memo</h1>
+      <ul>
+        {% for Memocond in memocond_list %}
+          <p> memo : {{ Memocond.text }}</p>
+          <p> location : {{ Memocond.gps }}</p>
+          <p> weather : {{ Memocond.weat }}</p>
+          <p> date : {{ Memocond.date | date:"y-m-d-h:m:s" }}</p>
+        {% endfor %}
+      </ul><br>
+      <p>city : {{ weather.city }}</p>
+      <p>current weather : {{ weather.temperature }}</p>
+      <p>description : {{ weather.description }}</p>
+  </body>
+</html>

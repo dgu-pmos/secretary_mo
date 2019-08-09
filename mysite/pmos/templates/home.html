@@ -1,0 +1,16 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h1>HOME</h1>
+  <h2><a href="{% url 'pmos:monitor' %}">my room monitoring</a></h2>
+  <h2><a href="{% url 'pmos:memo' %}">Memo</a></h2>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <h1>login please</h1>
+  <p><a href="{% url 'login' %}">login</a></p>
+{% endif %}
+{% endblock %}
