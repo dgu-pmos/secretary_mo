@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Roomcond(models.Model):
     temp = models.IntegerField(default=0)
@@ -17,3 +18,11 @@ class Memocond(models.Model):
 
     def __str__(self):
         return self.text
+
+class Housecond(models.Model):
+    balance = models.IntegerField()
+    expense = models.IntegerField()
+    person = models.CharField(max_length=10)
+    use = models.CharField(max_length=20)
+    comment = models.CharField(max_length=50)
+    date = models.DateField(default=datetime.today)

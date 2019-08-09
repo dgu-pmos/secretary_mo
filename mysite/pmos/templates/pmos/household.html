@@ -1,0 +1,22 @@
+<h1>our household</h1>
+
+<table>
+  <thead>
+    <th>날짜</th><th>금액</th><th>용도</th><th>작성자</th><th>잔액</th><th>비고</th>
+  </thead>
+  <tbody>
+    {% for Housecond in household_list %}
+    <tr>
+      <td>{{Housecond.date}}</td><td>{{Housecond.expense}}</td><td>{{Housecond.use}}</td><td>{{Housecond.person}}</td><td>{{Housecond.balance}}</td><td>{{Housecond.comment}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form class="" action="household_add/" method="get">
+
+  <br><input
+      type="button"
+      class="go_to_add"
+      value="add household"
+      onclick="location.href='{% url 'pmos:household_add' %}';"
+  >
