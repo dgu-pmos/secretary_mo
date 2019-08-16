@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title
+
+    <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+    <script type="text/JavaScript">
+
+      function getLocation() {
+        if (navigator.geolocation) { // GPS를 지원하면
+          navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('lat').value=position.coords.latitude;
+            document.getElementById('lon').value=position.coords.longitude;
+          }, function(error) {
+            console.error(error);
+          }, {
+            enableHighAccuracy: false,
+            maximumAge: 0,
+            timeout: Infinity
+          });
+        } else {
+          alert('GPS를 지원하지 않습니다');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Edit Memo</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_text">memo : </label>{{ form.text }}<br>
+            <label for="lat">lat : </label><input type="number" step=any name="lat" id="lat"/><br>
+            <label for="lon">lon : </label><input type="number" step=any name="lon" id="lon"/><br>
+            <br>
+            <input type = "button" onClick = "getLocation()" value = "Click" /><button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+    </div>
+  </body>
+</html>

@@ -5,7 +5,7 @@
       <p> Humidity : {{ latest_roomcond.humi }}</p>
       <p> Motion detecting : {{ latest_roomcond.motion }}</p>
   </ul>
-  <h3>measured time : {{ latest_roomcond.date | date:"y-m-d-h:m:s" }}</h3>
+  <h3>measured time : {{ latest_roomcond.date }}</h3>
 {% else %}
   <p>No room conditions are available.</p>
 {% endif %}

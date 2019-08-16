@@ -1,21 +1,38 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" href="{% static 'pmos/style.css' %}">
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
+    <center>
     <h1>My Memo</h1>
-      <ul>
-        {% for Memocond in memocond_list %}
-          <p> memo : {{ Memocond.text }}</p>
-          <p> location : {{ Memocond.locate }}</p>
-          <p> temperature : {{ Memocond.temp }}</p>
-          <p> humidity : {{ Memocond.humi }}</p>
-          <p> weather : {{ Memocond.weat }}</p>
-          <p> date : {{ Memocond.date | date:"y-m-d-h:m:s" }}</p>
+      {% for Memocond in memocond_list %}
+      <table border="1">
+        <thead>
+            <th colspan="4">Memo</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4">{{ Memocond.text }}</td>
+          </tr>
+          <tr>
+            <td>{{ Memocond.temp }}</td>
+            <td>{{ Memocond.humi }}</td>
+            <td colspan="2">{{ Memocond.locate }}</td>
+          </tr>
+         <tr>
+            <td colspan="2">{{  Memocond.weat }}</td>
+            <td colspan="2">{{ Memocond.date }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="button1" type="button" name="modify"><a href="{% url 'pmos:memo_edit' Memocond.id %}">modify</a></button>
+        <button class="button2" type="button" name="delete"><a href="{% url 'pmos:memo_delete' Memocond.id %}">delete</a></button>
+        <br><br>
         {% endfor %}
-      </ul><br>
 
       <input
           type="button"
@@ -23,5 +40,6 @@
           value="add memo"
           onclick="location.href='{% url 'pmos:memo_add' %}';"
       >
+    </center>
   </body>
 </html>

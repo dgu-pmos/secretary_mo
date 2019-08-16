@@ -1,11 +1,11 @@
 import datetime
 from django import forms
-from .models import Memocond, Housecond
+from .models import Roomcond, Memocond, Housecond
 
 class HouseForm(forms.ModelForm):
     class Meta:
         model = Housecond
-        fields=('balance', 'expense', 'person', 'use', 'comment', 'date')
+        fields=('expense', 'use', 'comment')
 
         #balance = forms.IntegerField(initial = prev_housecond.balance)
         #expense = forms.IntegerField()
@@ -21,3 +21,8 @@ class MemoForm(forms.ModelForm):
         widgets = {
             'text': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
         }
+
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Roomcond
+        fields=('temp', 'humi', 'motion',)

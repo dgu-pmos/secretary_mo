@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Household Edit</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p><label for="id_expense"> expense : </label>{{ form.expense }}</p>
+        <p><label for="id_comment"> comment : </label>{{ form.comment }}</p>
+        <!--<p>
+          <label for="id_person1"></label> person : 박형모 <input id="id_person1" type="radio" name="person" value="박형모">
+          <label for="id_person2"></label> 백승빈 <input id="id_person2" type="radio" name="person" value="백승빈">
+          <label for="id_person3"></label> 유형일 <input id="id_person3" type="radio" name="person" value="조현장">
+          <label for="id_person4"></label> 조현장 <input id="id_person4" type="radio" name="person" value="유형일">
+        </p>-->
+        <p>
+          <label for="id_use1"></label> use : 이체 <input id="id_use1" type="radio" name="use" value="이체">
+          <label for="id_use2"></label> 식비 <input id="id_use2" type="radio" name="use" value="식비">
+          <label for="id_use3"></label> 공공재 <input id="id_use3" type="radio" name="use" value="공공재">
+          <label for="id_use4"></label> 공과금 <input id="id_use4" type="radio" name="use" value="공과금">
+        </p>
+        <br>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>

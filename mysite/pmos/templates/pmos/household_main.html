@@ -1,0 +1,13 @@
+<h1>Household main</h1><br>
+<h2>balance : {{ household_balance.new_balance }}</h2>
+<br><input
+    type="button"
+    class="go_to_add"
+    value="add household"
+    onclick="location.href='{% url 'pmos:household_add' %}';"
+><input
+      type="button"
+      class="go_to_list"
+      value="household list"
+      onclick="location.href='{% url 'pmos:household' %}';"
+  >

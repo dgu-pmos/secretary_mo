@@ -25,9 +25,11 @@ class Memocond(models.Model):
         return self.text
 
 class Housecond(models.Model):
-    balance = models.IntegerField()
     expense = models.IntegerField()
-    person = models.CharField(max_length=10)
+    person = models.CharField(max_length=20)
     use = models.CharField(max_length=20)
-    comment = models.CharField(max_length=50)
-    date = models.DateField(default=timezone.localtime())
+    comment = models.CharField(max_length=50, default='-')
+    date = models.DateTimeField(auto_now_add=True)
+
+class Balance(models.Model):
+    new_balance = models.IntegerField(default=0)
