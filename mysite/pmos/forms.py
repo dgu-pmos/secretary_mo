@@ -19,7 +19,7 @@ class MemoForm(forms.ModelForm):
         model = Memocond
         fields=('text', 'lat', 'lon',)
         widgets = {
-            'text': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
+            'text': forms.Textarea(attrs={'cols': 45, 'rows': 8}),
         }
 
 class RoomForm(forms.ModelForm):

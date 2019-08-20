@@ -1,13 +1,8 @@
-<h1>Household main</h1><br>
-<h2>balance : {{ household_balance.new_balance }}</h2>
-<br><input
-    type="button"
-    class="go_to_add"
-    value="add household"
-    onclick="location.href='{% url 'pmos:household_add' %}';"
-><input
-      type="button"
-      class="go_to_list"
-      value="household list"
-      onclick="location.href='{% url 'pmos:household' %}';"
-  >
+{% extends 'base.html' %}
+{% block title %}Household Main{% endblock %}
+{% block content %}
+<h1 class="mainh1"><a href="{% url 'home' %}">가계부 잔고 확인</a></h1>
+<h2>잔고 : {{ household_balance.new_balance }}원</h2>
+  <button class="button2" type="button" onclick="location.href='{% url 'pmos:household_add' %}'">추가</button>
+  <button class="button2" type="button" onclick="location.href='{% url 'pmos:household' %}'">목록</button>
+  {% endblock %}

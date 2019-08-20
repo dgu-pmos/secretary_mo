@@ -1,40 +1,35 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title
-
-    <script type="text/JavaScript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
-    <script type="text/JavaScript">
-
-      function getLocation() {
-        if (navigator.geolocation) { // GPS를 지원하면
-          navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById('lat').value=position.coords.latitude;
-            document.getElementById('lon').value=position.coords.longitude;
-          }, function(error) {
-            console.error(error);
-          }, {
-            enableHighAccuracy: false,
-            maximumAge: 0,
-            timeout: Infinity
-          });
-        } else {
-          alert('GPS를 지원하지 않습니다');
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <h1> New Memo </h1>
+{% extends 'base.html' %}
+{% block head %}
+<script type="text/JavaScript">
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById('lat').value=position.coords.latitude;
+        document.getElementById('lon').value=position.coords.longitude;
+      }, function(error) {
+        alert('Error occurred. Error code: ' + error.code);
+      },
+      {timeout: 30000, enableHighAccuracy: true, maximumAge: 75000});}
+    else {
+      alert('GPS를 지원하지 않습니다');
+    }
+  }
+</script>
+{% endblock %}
+{% block title %}Memo Edit{% endblock %}
+{% block content %}
+    <h1> 메모 추가 </h1>
     <form action="{% url 'pmos:memo_add' %}" method="post">
     {% csrf_token %}
-    <label for="id_text">memo : </label>{{ form.text }}<br>
-    <label for="lat">lat : </label><input type="number" step=any name="lat" id="lat"/><br>
-    <label for="lon">lon : </label><input type="number" step=any name="lon" id="lon"/><br>
-    <input type = "button" onClick = "getLocation()" value = "Click" />
-    <input type="submit" value="Add"/>
+    {{ form.text }}
+    <br>
+    <br>
+    <label for="lat">lat : </label><input type="number" step=any name="lat" id="lat"/>&nbsp;&nbsp;&nbsp;<label for="lon">lon : </label><input type="number" step=any name="lon" id="lon"/><br>
+    <br>
+    <!--<button type="button" class="button2" onClick = "getLocation()" value = "현재위치등록""/>-->
+    <!--<button type="button" name="button"></button>-->
+    <input class="button2" type = "button" onClick = "getLocation()" value = "현재위치등록" />
+    &nbsp;&nbsp;&nbsp;
+    <button type="submit" class="button2">추가</button>
     </form>
-  </body>
-
-</html>
+{% endblock %}

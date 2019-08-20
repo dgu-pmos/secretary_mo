@@ -1,0 +1,73 @@
+body{
+  background-color: #CCCCCC;
+  margin-top: 80px;
+  text-align: center;
+  font-family: Noto Serif KR;
+}
+
+h1{
+  font-size: 45px;
+}
+
+h2{
+  margin-top: 40px;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+p{
+  font-size: 20px;
+}
+
+ul{
+  font-family: irop;
+  text-align:center;
+}
+
+.button1{
+  font-family: Noto Serif KR;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100px;
+  font-size: 14px;
+}
+
+.button2{
+  font-family: Noto Serif KR;
+  padding: 5px;
+  border-radius: 10px;
+  width: 80px;
+  font-size: 12px;
+}
+
+.button3{
+  font-family: Noto Serif KR;
+  padding: 1px;
+  border-radius: 10px;
+  width: 30px;
+  font-size: 8px;
+}
+
+.mainh1{
+    margin-top: 40px;
+    font-size: 40px;
+}
+
+.tablememo{
+  border-color: #000000;
+  text-align: center;
+  width: 300px;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.tablehouse{
+  width: 340px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+A:link{text-decoration: none; color: #000000;}
+A:visited{text-decoration: none; color: #000000;}
+A:active{text-decoration: none; color: #000000;}
+A:hover{text-decoration: none; color: #000000;}

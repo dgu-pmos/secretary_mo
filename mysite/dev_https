@@ -1,0 +1,10 @@
+pid=
+
+cert=/Users/parkhyeongmo/dev/my_own_project/mysite/stunnel.pem
+foreground = yes
+output = stunnel.log
+
+[https]
+accept=8443
+connect=8001
+TIMEOUTclose=1

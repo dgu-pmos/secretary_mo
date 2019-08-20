@@ -16,6 +16,7 @@ class Memocond(models.Model):
     lat = models.FloatField(max_length = 100, default=37.5400399)
     lon = models.FloatField(max_length = 100, default=127.09341909999999)
     locate = models.CharField(max_length = 50, default='aa')
+    person = models.CharField(max_length = 50, default='cc')
     temp = models.IntegerField(default=30)
     humi = models. IntegerField(default=30)
     weat = models.CharField(max_length = 20, default='bb')

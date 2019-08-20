@@ -14,6 +14,8 @@ from .forms import RoomForm, HouseForm, MemoForm
 
 from django.contrib.auth import get_user
 
+from django.core.paginator import Paginator
+
 import datetime
 
 from django.views.decorators.csrf import csrf_exempt
@@ -28,11 +30,18 @@ def monitor(request):
     return render(request, 'pmos/monitor.html', {'latest_roomcond':latest_roomcond})
 
 def memo(request):
-    memocond_list = Memocond.objects.all().order_by('-date')[:20]
-    return render(request, 'pmos/memo.html', {'memocond_list':memocond_list})
+    current_user=get_user(request)
+    memoconds = Memocond.objects
+    memocond_list = Memocond.objects.filter(person=current_user.first_name).order_by('-date')
+    paginator = Paginator(memocond_list, 3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    #return render(request, 'pmos/memo.html', {'memocond_list':memocond_list})
+    return render(request, 'pmos/memo.html', {'memoconds':memoconds, 'posts':posts})
 
 def memo_add(request):
     if request.method == "POST":
+        current_user=get_user(request)
         form = MemoForm(request.POST, request.FILES)
         if form.is_valid():
             memo = form.save(commit=False)
@@ -40,6 +49,7 @@ def memo_add(request):
             url2 = 'https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x={}&y={}&input_coord=WGS84'.format(memo.lon, memo.lat)
             city_name = requests.get(url2, headers=headers).json()
             city_weather = requests.get(url).json()
+            memo.person = current_user.first_name
             memo.temp = round(city_weather['main']['temp']/10)
             memo.humi = city_weather['main']['humidity']
             memo.locate = city_name['documents'][0]['address_name']
@@ -53,6 +63,7 @@ def memo_add(request):
 def memo_edit(request, memocond_id):
     memo = Memocond.objects.get(id=memocond_id)
     if request.method == "POST":
+        current_user=get_user(request)
         form = MemoForm(request.POST, request.FILES)
         if form.is_valid():
             memo.text = form.cleaned_data['text']
@@ -62,6 +73,7 @@ def memo_edit(request, memocond_id):
             url2 = 'https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x={}&y={}&input_coord=WGS84'.format(memo.lon, memo.lat)
             city_name = requests.get(url2, headers=headers).json()
             city_weather = requests.get(url).json()
+            memo.person = current_user.first_name
             memo.temp = round(city_weather['main']['temp']/10)
             memo.humi = city_weather['main']['humidity']
             memo.locate = city_name['documents'][0]['address_name']

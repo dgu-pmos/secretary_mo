@@ -1,11 +1,13 @@
-<h1>My Room Monitoring</h1>
+{% extends 'base.html' %}
+{% block title %}Room monitoring{% endblock %}
+{% block content %}
+<h1><a href="{% url 'home' %}">현재 방 상태</a></h1>
 {% if latest_roomcond %}
-  <ul>
-      <p> Temperature : {{ latest_roomcond.temp }}</p>
-      <p> Humidity : {{ latest_roomcond.humi }}</p>
-      <p> Motion detecting : {{ latest_roomcond.motion }}</p>
-  </ul>
-  <h3>measured time : {{ latest_roomcond.date }}</h3>
+      <p> 온도 : {{ latest_roomcond.temp }}°C</p>
+      <p>습도 : {{ latest_roomcond.humi }}%</p>
+      <p>움직임 감지 : {{ latest_roomcond.motion }}</p>
+      <p>측정 시간 : {{ latest_roomcond.date | date:"Y-m-d h:m:s"}}</p>
 {% else %}
   <p>No room conditions are available.</p>
 {% endif %}
+{% endblock %}

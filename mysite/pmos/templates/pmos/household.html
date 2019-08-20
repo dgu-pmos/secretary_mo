@@ -1,24 +1,21 @@
-<h1>our household</h1>
-
-<table>
+{% extends 'base.html' %}
+{% block title %}Household List{% endblock %}
+{% block content %}
+<h1 class="mainh2"><a href="{% url 'pmos:household_main' %}">가계부 목록</h1>
+<table class="tablehouse" align="center">
   <thead>
-    <th>날짜</th><th>금액</th><th>용도</th><th>작성자</th><th>잔액</th><th>비고</th>
+    <th>날짜</th><th>금액</th><th>용도</th><th class="thhouse">작성자</th><th>비고</th>
   </thead>
   <tbody>
     {% for Housecond in household_list %}
     <tr>
-      <td>{{Housecond.date}}</td><td>{{Housecond.expense}}</td><td>{{Housecond.use}}</td><td>{{Housecond.person}}</td><td>{{Housecond.balance}}</td><td>{{Housecond.comment}}</td>
-        <td><button class="button1" type="button" name="modify"><a href="{% url 'pmos:household_edit' Housecond.id %}">modify</a></button></td>
-        <td><button class="button2" type="button" name="delete"><a href="{% url 'pmos:household_delete' Housecond.id %}">delete</a></button></td>
+      <td>{{Housecond.date | date:"Y-m-d" }}</td><td>{{Housecond.expense}}</td><td>{{Housecond.use}}</td><td>{{Housecond.person}}</td><td>{{Housecond.comment}}</td>
+      <td><button class="button3" type="button" onclick="location.href='{% url 'pmos:household_edit' Housecond.id %}'">수정</button></td>
+      <td><button class="button3" type="button" onclick="location.href='{% url 'pmos:household_delete' Housecond.id %}'">삭제</button></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<form class="" action="household_add/" method="get">
-
-  <br><input
-      type="button"
-      class="go_to_add"
-      value="add household"
-      onclick="location.href='{% url 'pmos:household_add' %}';"
-  >
+  <br>
+  <button class="button1" type="button" onclick="location.href='{% url 'pmos:household_add' %}'">가계부 추가</button></td>
+{% endblock %}

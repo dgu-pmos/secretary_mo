@@ -1,9 +1,13 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
 <html>
+{% load static %}
 <head>
-  <meta charset="utf-8">
-  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,
+  maximum-scale=1.0, minimum-scale=1.0" charset="utf-8">
+  <link rel="stylesheet" href="{% static 'pmos/style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet"> 
+  {% block head %}{% endblock %}
+  <title>{% block title %}Welcome to Secretary.mo{% endblock %}</title>
 </head>
 <body>
   <main>
