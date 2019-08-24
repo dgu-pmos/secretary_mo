@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Household List{% endblock %}
 {% block content %}
-<h1 class="mainh2"><a href="{% url 'pmos:household_main' %}">가계부 목록</h1>
+<h1 class="mainh2"><a href="{% url 'pmos:household_main' %}">가계부 목록</a></h1>
 <table class="tablehouse" align="center">
   <thead>
-    <th>날짜</th><th>금액</th><th>용도</th><th class="thhouse">작성자</th><th>비고</th>
+    <th>날짜</th><th>금액</th><th>용도</th><th>작성자</th><th>비고</th>
   </thead>
   <tbody>
     {% for Housecond in household_list %}

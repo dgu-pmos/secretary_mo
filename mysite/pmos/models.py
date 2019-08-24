@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+#import datetime
 from django.utils import timezone
 
 class Roomcond(models.Model):
@@ -23,7 +23,7 @@ class Memocond(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.text
+        return self.text, self.date
 
 class Housecond(models.Model):
     expense = models.IntegerField()

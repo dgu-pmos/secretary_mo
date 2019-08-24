@@ -16,6 +16,8 @@ from django.contrib.auth import get_user
 
 from django.core.paginator import Paginator
 
+#from django.utils import timezone
+
 import datetime
 
 from django.views.decorators.csrf import csrf_exempt
@@ -118,7 +120,7 @@ def household_add(request):
 
 def household_edit(request, housecond_id):
     house = Housecond.objects.get(id=housecond_id)
-    if request.method=='POST':
+    if request.method=="POST":
         current_user=get_user(request)
         form = HouseForm(request.POST, request.FILES)
         if form.is_valid():

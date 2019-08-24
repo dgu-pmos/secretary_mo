@@ -24,8 +24,13 @@
         {{ form.text }}
         <br>
         <br>
-        <label for="lat">lat : </label><input type="number" step=any name="lat" id="lat"/>&nbsp;&nbsp;&nbsp;<label for="lon">lon : </label><input type="number" step=any name="lon" id="lon"/><br>
+        <label for="lat">lat : </label><input class="numbers"  type="number" step=any name="lat" id="lat"/>
+	&nbsp;&nbsp;&nbsp;
+	<label for="lon">lon : </label><input class="numbers"  type="number" step=any name="lon" id="lon"/><br>
         <br>
-        <button class="button2" onClick = "getLocation()">현재위치등록</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="button2">수정</button>
+	<!--<input class="button2" type="button"  onClick = "getLocation()" value="현재위치등록" />-->
+	<button class="button2" type="button" onClick="getLocation()">위치등록</button>
+	&nbsp;&nbsp;&nbsp;
+	<button type="submit" class="button2">수정</button>
     </form>
 {% endblock %}

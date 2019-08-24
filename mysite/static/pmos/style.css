@@ -1,8 +1,8 @@
-<style type="text/css">
-
 body{
+  background-color: #CCCCCC;
   margin-top: 80px;
   text-align: center;
+  font-family: Noto Serif KR;
 }
 
 h1{
@@ -20,11 +20,11 @@ p{
 }
 
 ul{
-  font-family: irop;
   text-align:center;
 }
 
 .button1{
+  font-family: Noto Serif KR;
   padding: 10px;
   border-radius: 10px;
   width: 100px;
@@ -32,6 +32,7 @@ ul{
 }
 
 .button2{
+  font-family: Noto Serif KR;
   padding: 5px;
   border-radius: 10px;
   width: 80px;
@@ -39,10 +40,11 @@ ul{
 }
 
 .button3{
+  font-family: Noto Serif KR;
   padding: 1px;
   border-radius: 10px;
   width: 30px;
-  font-size: 6px;
+  font-size: 8px;
 }
 
 .mainh1{
@@ -51,6 +53,7 @@ ul{
 }
 
 .tablememo{
+  border-color: #000000;
   text-align: center;
   width: 300px;
   margin-bottom: 10px;
@@ -58,7 +61,13 @@ ul{
 }
 
 .tablehouse{
+  width: 340px;
+  margin-bottom: 10px;
   font-size: 13px;
+}
+
+.numbers{
+  width: 70px;
 }
 
 A:link{text-decoration: none; color: #000000;}

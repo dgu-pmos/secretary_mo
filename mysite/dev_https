@@ -1,6 +1,6 @@
 pid=
 
-cert=/Users/parkhyeongmo/dev/my_own_project/mysite/stunnel.pem
+cert=/home/pi/secretary_mo/secretary_mo/mysite/stunnel.pem
 foreground = yes
 output = stunnel.log
 

@@ -6,7 +6,7 @@
       <p> 온도 : {{ latest_roomcond.temp }}°C</p>
       <p>습도 : {{ latest_roomcond.humi }}%</p>
       <p>움직임 감지 : {{ latest_roomcond.motion }}</p>
-      <p>측정 시간 : {{ latest_roomcond.date | date:"Y-m-d h:m:s"}}</p>
+      <p>측정 시간 : {{ latest_roomcond.date | date:"Y-m-d h:i:s"}}</p>
 {% else %}
   <p>No room conditions are available.</p>
 {% endif %}
