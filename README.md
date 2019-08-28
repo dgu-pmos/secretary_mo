@@ -1,6 +1,8 @@
 Secretary_mo
 함께 살고있는 룸메이트들과 같이 사용하기 위해 웹 사이트를 제작했습니다.
 
+![login_cap](./images/login_cap.jpeg)
+
 1. 나의 방 모니터링 기능
 
 Arduino UNO, DHT11, ESP8266을 이용해 주기적으로 웹 사이트에 센싱 데이터들을 POST 합니다.
