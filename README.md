@@ -12,6 +12,7 @@ Arduino UNO, DHT11, ESP8266을 이용해 주기적으로 웹 사이트에 센싱
 (추후 모션 센서를 추가해 방 안의 움직임을 탐지하는 기능을 추가할 예정이며 LPWAN 환경에 적용하고자
 Wi-Fi가 아닌 Cat.M1 통신으로 데이터를 전송할 예정입니다.)
 
+<p align="center"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/room_cap.jpeg" width="250" height="400"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/arduino.jpeg" width="250" height="400"></p>
 
 2. 메모 기능
 
@@ -25,6 +26,7 @@ KAKAO REST API를 이용해 현 위치의 한글 주소명을 기록합니다.
 
 Openwheather API를 이용해 현 위치의 날씨, 온도, 습도를 기록합니다.
 
+<p align="center"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/memo_cap.jpeg" width="250" height="400"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/memoadd_cap.jpeg" width="250" height="400"></p>
 
 3. 가계부 기능
 
@@ -39,3 +41,5 @@ Openwheather API를 이용해 현 위치의 날씨, 온도, 습도를 기록합�
 그리고 가계부를 추가할 경우, 로그인한 계정을 인식해서 작성자는 자동으로 입력하도록 하고
 
 입금할 경우에만 잔고에 금액을 추가하고 그 외는 잔고에 금액을 뺍니다.
+
+<p align="center"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/hhmain_cap.jpeg" width="250" height="400"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/hhlist_cap.jpeg" width="250" height="400"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/hhadd_cap.jpeg" width="250" height="400"></p>
