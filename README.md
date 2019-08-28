@@ -1,7 +1,7 @@
 Secretary_mo
 함께 살고있는 룸메이트들과 같이 사용하기 위해 웹 사이트를 제작했습니다.
 
-<p align="center"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/login_cap.jpeg" width="400" height="400"></p>
+<p align="center"><img src="https://github.com/dgu-pmos/secretary_mo/blob/master/images/login_cap.jpeg" width="300" height="400"></p>
 
 1. 나의 방 모니터링 기능
 
